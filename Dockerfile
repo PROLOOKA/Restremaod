@@ -1,10 +1,15 @@
-FROM datarhei/restreamer:latest
+FROM flussonic/flussonic:latest
 
-# فتح منافذ البث:
-# 1935: RTMP (الذي تحتاجه الآن)
-# 8080: واجهة التحكم (المتصفح)
-# 6000: SRT (للبث بجودة عالية)
-EXPOSE 8080 1935 1936 6000/udp
+# منفذ واجهة Flussonic
+EXPOSE 80
 
-# تعريف المنفذ لـ Railway
-ENV PORT=8080
+# منفذ RTMP
+EXPOSE 1935
+
+# منفذ RTMPS (اختياري)
+EXPOSE 1936
+
+# منفذ SRT
+EXPOSE 6000/udp
+
+ENV PORT=80
